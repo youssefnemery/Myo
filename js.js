@@ -113,47 +113,6 @@ function prev() {
 
 
 
-
-// /* Gallery 2 */
-// let moments = [
-//     { title: "", desc: "" },
-// ];
-
-// let j = 0;
-
-// function changeImage2(newIndex2) {
-//     let card = document.querySelector(".card2");
-
-//     // fade out
-//     card.style.opacity = "0";
-//     card.style.transform = "scale(0.95)";
-
-//     setTimeout(() => {
-//         j = newIndex2;
-
-//         document.getElementById("title2").innerText = moments[j].title;
-//         document.getElementById("desc2").innerText = moments[j].desc;
-
-//         // مهم جدًا: force reflow
-//         card.offsetHeight;
-
-//         // fade in
-//         card.style.opacity = "1";
-//         card.style.transform = "scale(1)";
-//     }, 200);
-// }
-
-// function next2() {
-//     let newIndex2 = (j + 1) % moments.length;
-//     changeImage2(newIndex2);
-// }
-
-// function prev2() {
-//     let newIndex2 = (j - 1 + moments.length) % moments.length;
-//     changeImage2(newIndex2);
-// }
-
-
 function login(){
 
     let username =
