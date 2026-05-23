@@ -1,0 +1,927 @@
+ * {
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+     font-family: 'Courier New', Courier, monospace;
+ }
+
+ html,
+ body {
+     height: 100%;
+     margin: 0;
+ }
+
+ body {
+     background-color: rgb(0, 0, 0);
+     color: white;
+     overflow-x: hidden;
+     overflow-y: auto;
+
+ }
+
+ #bgVideo {
+     position: fixed;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100dvh;
+     object-fit: cover;
+     z-index: -1;
+ }
+
+
+
+
+
+
+ .login-box {
+     width: 50%;
+     height: 95vh;
+     margin: auto;
+     padding: 20px;
+     background-image: url("login.jpeg");
+     background-repeat: no-repeat;
+     background-size: cover;
+     border-radius: 10px;
+     text-align: center;
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+
+ }
+
+ .login-box h1 {
+     font-size: 32px;
+     margin-bottom: 20px;
+     color: white;
+     text-shadow: 0px 0px 10px white;
+     -webkit-text-stroke: 1px #000000;
+ }
+
+ .login-box input {
+     width: 70%;
+     padding: 10px;
+     margin-top: 10px;
+     margin: 10px 0;
+     border: 1px solid white;
+     border-radius: 15px;
+     background-color: rgb(106, 106, 106);
+ } 
+
+ .login-box input::placeholder {
+     color: white;
+     opacity: 0.7;
+     text-align: center;
+ }
+
+ .login-box button {
+     width: 70%;
+     padding: 10px;
+     margin-top: 15px;
+     cursor: pointer;
+     border: 1px solid white;
+     border-radius: 15px;
+     background-color: #860a21;
+     color: white;
+     box-shadow: 0px 0px 15px white ;
+     
+ }
+
+ #errorMsg {
+     color: rgb(153, 1, 1);
+     margin-top: 10px;
+ }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ /* طبقة تغميق عشان الكلام يبقى واضح */
+ body::after {
+     content: "";
+     position: fixed;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100%;
+     background: rgba(0, 0, 0, 0.64);
+     z-index: -1;
+ }
+
+ /* Overlay */
+ #overlay {
+     position: fixed;
+     width: 100%;
+     height: 100%;
+     background: #000000;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     flex-direction: column;
+     z-index: 999;
+ }
+
+ .btns {
+     display: flex;
+     gap: 15px;
+     margin-top: 20px;
+ }
+
+ #overlay button {
+     padding: 10px 25px;
+     border-radius: 12px;
+     cursor: pointer;
+     font-size: 18px;
+     color: white;
+     transition: 0.3s;
+ }
+
+ #yes {
+     position: relative;
+     background: #660b1c;
+     color: white;
+     overflow: hidden;
+     border: 1px solid rgba(255, 30, 30, 0.275);
+     z-index: 1;
+     border-radius: 8px;
+     cursor: pointer;
+     padding: 10px 20px;
+     box-shadow: 0px 0px 30px 5px rgb(255, 30, 30);
+     /* النبض */
+     animation: pulse 1.5s infinite;
+ }
+
+ /* طبقة اللون المتحركة */
+ #yes::before {
+     content: "";
+     position: absolute;
+     top: 0;
+     right: 0;
+     width: 0%;
+     height: 100%;
+     background: #c1314b;
+     transition: 0.5s ease;
+     z-index: -1;
+ }
+
+ #yes:active::before {
+     width: 100%;
+     left: 0;
+ }
+
+ /* أنيميشن النبض */
+ @keyframes pulse {
+     0% {
+         transform: scale(1);
+     }
+
+     50% {
+         transform: scale(1.08);
+     }
+
+     100% {
+         transform: scale(1);
+     }
+ }
+
+ #no {
+     background: #444;
+     position: relative;
+     border: 1px solid rgba(255, 255, 255, 0.527);
+
+ }
+
+ /* Sections */
+ section {
+     min-height: 100dvh;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     flex-direction: column;
+     /* padding: 50px; */
+     text-align: center;
+     /* border: 1px solid white; */
+ }
+
+ /* Counter */
+ .counter {
+     font-size: 32px;
+     margin-top: 20px;
+     font-weight: bold;
+     /* border: 1px solid rgb(251, 255, 0); */
+
+ }
+
+ /* Cards */
+ .card1,
+ .card2 {
+     width: 800px;
+     padding: 20px;
+     border-radius: 20px;
+     border: 1px solid rgba(255, 255, 255, 0.716);
+     background: rgba(0, 0, 0, 0.322);
+     box-shadow: 0 0 25px rgba(255, 255, 255, 0.312);
+
+     transition: 0.2s ease;
+
+     animation: floatMove 6s ease-in-out infinite;
+ }
+
+ @keyframes floatMove {
+     0% {
+         transform: translate(0px, 0px) rotate(0deg);
+     }
+
+     25% {
+         transform: translate(10px, -8px) rotate(0.5deg);
+     }
+
+     50% {
+         transform: translate(-8px, 10px) rotate(-0.5deg);
+     }
+
+     75% {
+         transform: translate(8px, 8px) rotate(0.3deg);
+     }
+
+     100% {
+         transform: translate(0px, 0px) rotate(0deg);
+     }
+ }
+
+
+ /* حركة ناعمة */
+ .fade-out {
+     opacity: 0;
+     transform: scale(0.95);
+     transition: 0.2s ease;
+ }
+
+ .fade-in {
+     opacity: 1;
+     transform: scale(1);
+     transition: 0.2s ease;
+ }
+
+ /* Gallery */
+ .gallery {
+     display: flex;
+     align-items: center;
+     gap: 20px;
+     perspective: 1200px;
+ }
+
+ .gallery img {
+     width: 80%;
+     border-radius: 15px;
+     backface-visibility: hidden;
+     border: 1px solid rgba(255, 255, 255, 0.618);
+ }
+
+ /* Nav buttons */
+ .nav-btn {
+     background-color: rgba(255, 255, 255, 0);
+     color: white;
+     border: none;
+     padding: 10px 15px;
+     border-radius: 50%;
+     cursor: pointer;
+     font-size: 18px;
+     transition: all ease 0.2s;
+ }
+
+ .nav-btn:hover {
+     font-size: 25px;
+     color: rgba(255, 255, 255, 0.723);
+     transition: all ease 0.2s;
+ }
+
+ .nav-btn:active {
+     font-size: 25px;
+     color: rgba(255, 255, 255, 0.723);
+     transition: all ease 0.2s;
+ }
+
+ /* Animation */
+ .fade {
+     animation: fadeIn 1.2s ease;
+ }
+
+
+ .translate-btn {
+     display: inline-block;
+     margin-top: 15px;
+     cursor: pointer;
+     color: #ff7fc1;
+     border-bottom: 2px solid #ff4da6;
+     transition: 0.3s;
+ }
+
+ .translate-btn:hover {
+     opacity: 0.7;
+ }
+
+ .arabic {
+     margin-top: 20px;
+     max-width: 600px;
+     line-height: 1.8;
+     display: none;
+     animation: fadeIn 0.6s ease;
+ }
+
+ @keyframes fadeIn {
+     from {
+         opacity: 0;
+         transform: translateY(40px);
+     }
+
+     to {
+         opacity: 1;
+         transform: translateY(0);
+     }
+ }
+
+ /* ================= MOBILE ================= */
+ @media (max-width: 768px) {
+
+     section {
+         padding: 20px;
+     }
+
+     /* الكروت */
+     .card1,
+     .card2 {
+         width: 90%;
+         max-width: 100%;
+         padding: 15px;
+         border-radius: 15px;
+         animation: floatMove 8s ease-in-out infinite;
+         /* أهدى شوية */
+     }
+
+     /* النصوص */
+     .counter {
+         font-size: 22px;
+     }
+
+     h1,
+     h2 {
+         font-size: 22px;
+     }
+
+     p {
+         font-size: 14px;
+         line-height: 1.6;
+     }
+
+     /* الأزرار */
+     .btns {
+         flex-direction: column;
+         gap: 10px;
+         width: 100%;
+         align-items: center;
+     }
+
+     #overlay button {
+         /* width: 80%; */
+         font-size: 16px;
+         padding: 10px;
+     }
+
+     /* زر no */
+     #no {
+         position: relative;
+         width: 20%;
+     }
+
+     /* الجاليري */
+     .gallery {
+         flex-direction: column;
+         gap: 10px;
+     }
+
+     .gallery img {
+         width: 100%;
+         max-width: 300px;
+     }
+
+     /* الأسهم */
+     .nav-btn {
+         font-size: 16px;
+         padding: 8px 12px;
+     }
+
+     /* الترجمة */
+     .arabic {
+         max-width: 90%;
+         font-size: 14px;
+     }
+
+
+      .login-box {
+        width: 90%;
+        height: 100vh;
+        padding: 15px;
+        border-radius: 0;
+        background-position: center;
+    }
+
+    .login-box h1 {
+        font-size: 24px;
+        margin-bottom: 15px;
+    }
+
+    .login-box input {
+        width: 90%;
+        padding: 12px;
+        font-size: 16px;
+    }
+
+    .login-box button {
+        width: 90%;
+        padding: 12px;
+        font-size: 16px;
+    }
+
+    #errorMsg {
+        font-size: 14px;
+    }
+
+ }
+ * {
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+     font-family: 'Courier New', Courier, monospace;
+ }
+
+ html,
+ body {
+     height: 100%;
+     margin: 0;
+ }
+
+ body {
+     background-color: rgb(0, 0, 0);
+     color: white;
+     overflow-x: hidden;
+     overflow-y: auto;
+
+ }
+
+ #bgVideo {
+     position: fixed;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100dvh;
+     object-fit: cover;
+     z-index: -1;
+ }
+
+
+
+
+
+
+ .login-box {
+     width: 50%;
+     height: 95vh;
+     margin: auto;
+     padding: 20px;
+     background-image: url("login.jpeg");
+     background-repeat: no-repeat;
+     background-size: cover;
+     border-radius: 10px;
+     text-align: center;
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+
+ }
+
+ .login-box h1 {
+     font-size: 32px;
+     margin-bottom: 20px;
+     color: white;
+     text-shadow: 0px 0px 10px white;
+     -webkit-text-stroke: 1px #000000;
+ }
+
+ .login-box input {
+     width: 70%;
+     padding: 10px;
+     margin-top: 10px;
+     margin: 10px 0;
+     border: 1px solid white;
+     border-radius: 15px;
+     background-color: rgb(106, 106, 106);
+ } 
+
+ .login-box input::placeholder {
+     color: white;
+     opacity: 0.7;
+     text-align: center;
+ }
+
+ .login-box button {
+     width: 70%;
+     padding: 10px;
+     margin-top: 15px;
+     cursor: pointer;
+     border: 1px solid white;
+     border-radius: 15px;
+     background-color: #860a21;
+     color: white;
+     box-shadow: 0px 0px 15px white ;
+     
+ }
+
+ #errorMsg {
+     color: rgb(153, 1, 1);
+     margin-top: 10px;
+ }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ /* طبقة تغميق عشان الكلام يبقى واضح */
+ body::after {
+     content: "";
+     position: fixed;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100%;
+     background: rgba(0, 0, 0, 0.64);
+     z-index: -1;
+ }
+
+ /* Overlay */
+ #overlay {
+     position: fixed;
+     width: 100%;
+     height: 100%;
+     background: #000000;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     flex-direction: column;
+     z-index: 999;
+ }
+
+ .btns {
+     display: flex;
+     gap: 15px;
+     margin-top: 20px;
+ }
+
+ #overlay button {
+     padding: 10px 25px;
+     border-radius: 12px;
+     cursor: pointer;
+     font-size: 18px;
+     color: white;
+     transition: 0.3s;
+ }
+
+ #yes {
+     position: relative;
+     background: #660b1c;
+     color: white;
+     overflow: hidden;
+     border: 1px solid rgba(255, 30, 30, 0.275);
+     z-index: 1;
+     border-radius: 8px;
+     cursor: pointer;
+     padding: 10px 20px;
+     box-shadow: 0px 0px 30px 5px rgb(255, 30, 30);
+     /* النبض */
+     animation: pulse 1.5s infinite;
+ }
+
+ /* طبقة اللون المتحركة */
+ #yes::before {
+     content: "";
+     position: absolute;
+     top: 0;
+     right: 0;
+     width: 0%;
+     height: 100%;
+     background: #c1314b;
+     transition: 0.5s ease;
+     z-index: -1;
+ }
+
+ #yes:active::before {
+     width: 100%;
+     left: 0;
+ }
+
+ /* أنيميشن النبض */
+ @keyframes pulse {
+     0% {
+         transform: scale(1);
+     }
+
+     50% {
+         transform: scale(1.08);
+     }
+
+     100% {
+         transform: scale(1);
+     }
+ }
+
+ #no {
+     background: #444;
+     position: relative;
+     border: 1px solid rgba(255, 255, 255, 0.527);
+
+ }
+
+ /* Sections */
+ section {
+     min-height: 100dvh;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     flex-direction: column;
+     /* padding: 50px; */
+     text-align: center;
+     /* border: 1px solid white; */
+ }
+
+ /* Counter */
+ .counter {
+     font-size: 32px;
+     margin-top: 20px;
+     font-weight: bold;
+     /* border: 1px solid rgb(251, 255, 0); */
+
+ }
+
+ /* Cards */
+ .card1,
+ .card2 {
+     width: 800px;
+     padding: 20px;
+     border-radius: 20px;
+     border: 1px solid rgba(255, 255, 255, 0.716);
+     background: rgba(0, 0, 0, 0.322);
+     box-shadow: 0 0 25px rgba(255, 255, 255, 0.312);
+
+     transition: 0.2s ease;
+
+     animation: floatMove 6s ease-in-out infinite;
+ }
+
+ @keyframes floatMove {
+     0% {
+         transform: translate(0px, 0px) rotate(0deg);
+     }
+
+     25% {
+         transform: translate(10px, -8px) rotate(0.5deg);
+     }
+
+     50% {
+         transform: translate(-8px, 10px) rotate(-0.5deg);
+     }
+
+     75% {
+         transform: translate(8px, 8px) rotate(0.3deg);
+     }
+
+     100% {
+         transform: translate(0px, 0px) rotate(0deg);
+     }
+ }
+
+
+ /* حركة ناعمة */
+ .fade-out {
+     opacity: 0;
+     transform: scale(0.95);
+     transition: 0.2s ease;
+ }
+
+ .fade-in {
+     opacity: 1;
+     transform: scale(1);
+     transition: 0.2s ease;
+ }
+
+ /* Gallery */
+ .gallery {
+     display: flex;
+     align-items: center;
+     gap: 20px;
+     perspective: 1200px;
+ }
+
+ .gallery img {
+     width: 80%;
+     border-radius: 15px;
+     backface-visibility: hidden;
+     border: 1px solid rgba(255, 255, 255, 0.618);
+ }
+
+ /* Nav buttons */
+ .nav-btn {
+     background-color: rgba(255, 255, 255, 0);
+     color: white;
+     border: none;
+     padding: 10px 15px;
+     border-radius: 50%;
+     cursor: pointer;
+     font-size: 18px;
+     transition: all ease 0.2s;
+ }
+
+ .nav-btn:hover {
+     font-size: 25px;
+     color: rgba(255, 255, 255, 0.723);
+     transition: all ease 0.2s;
+ }
+
+ .nav-btn:active {
+     font-size: 25px;
+     color: rgba(255, 255, 255, 0.723);
+     transition: all ease 0.2s;
+ }
+
+ /* Animation */
+ .fade {
+     animation: fadeIn 1.2s ease;
+ }
+
+
+ .translate-btn {
+     display: inline-block;
+     margin-top: 15px;
+     cursor: pointer;
+     color: #ff7fc1;
+     border-bottom: 2px solid #ff4da6;
+     transition: 0.3s;
+ }
+
+ .translate-btn:hover {
+     opacity: 0.7;
+ }
+
+ .arabic {
+     margin-top: 20px;
+     max-width: 600px;
+     line-height: 1.8;
+     display: none;
+     animation: fadeIn 0.6s ease;
+ }
+
+ @keyframes fadeIn {
+     from {
+         opacity: 0;
+         transform: translateY(40px);
+     }
+
+     to {
+         opacity: 1;
+         transform: translateY(0);
+     }
+ }
+
+ /* ================= MOBILE ================= */
+ @media (max-width: 768px) {
+
+     section {
+         padding: 20px;
+     }
+
+     /* الكروت */
+     .card1,
+     .card2 {
+         width: 90%;
+         max-width: 100%;
+         padding: 15px;
+         border-radius: 15px;
+         animation: floatMove 8s ease-in-out infinite;
+         /* أهدى شوية */
+     }
+
+     /* النصوص */
+     .counter {
+         font-size: 22px;
+     }
+
+     h1,
+     h2 {
+         font-size: 22px;
+     }
+
+     p {
+         font-size: 14px;
+         line-height: 1.6;
+     }
+
+     /* الأزرار */
+     .btns {
+         flex-direction: column;
+         gap: 10px;
+         width: 100%;
+         align-items: center;
+     }
+
+     #overlay button {
+         /* width: 80%; */
+         font-size: 16px;
+         padding: 10px;
+     }
+
+     /* زر no */
+     #no {
+         position: relative;
+         width: 20%;
+     }
+
+     /* الجاليري */
+     .gallery {
+         flex-direction: column;
+         gap: 10px;
+     }
+
+     .gallery img {
+         width: 100%;
+         max-width: 300px;
+     }
+
+     /* الأسهم */
+     .nav-btn {
+         font-size: 16px;
+         padding: 8px 12px;
+     }
+
+     /* الترجمة */
+     .arabic {
+         max-width: 90%;
+         font-size: 14px;
+     }
+
+
+      .login-box {
+        width: 90%;
+        height: 100vh;
+        padding: 15px;
+        border-radius: 0;
+        background-position: center;
+    }
+
+    .login-box h1 {
+        font-size: 24px;
+        margin-bottom: 15px;
+        color: white;
+        text-shadow: 0px 0px 10px white;
+     -webkit-text-stroke: 1px #000000;
+    }
+
+    .login-box input {
+        width: 90%;
+        padding: 12px;
+        font-size: 16px;
+    }
+
+    .login-box button {
+        width: 90%;
+        padding: 12px;
+        font-size: 16px;
+    }
+
+    #errorMsg {
+        font-size: 14px;
+    }
+
+ }

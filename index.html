@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ar">
+
+<head>
+    <meta charset="UTF-8">
+    <title>i love you</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <!-- Login Section -->
+    <div class="login-box" id="loginBox">
+
+        <h1>Login</h1>
+
+        <input type="text" id="username" placeholder="Username">
+
+        <input type="password" id="password" placeholder="Password">
+
+        <button onclick="login()">Login</button>
+
+        <p id="errorMsg"></p>
+
+    </div>
+
+    <div id="website" style="display: none;">
+        <video autoplay muted loop id="bgVideo">
+            <source src="bg.mp4" type="video/mp4">
+        </video>
+
+        <!-- Section 1 -->
+        <div id="overlay">
+            <h2>Do You Love Me?!</h2>
+            <div class="btns">
+                <button id="yes" onclick="enter()">Yes , I Love You </button>
+                <button id="no" onclick="moveBtn()">NO</button>
+            </div>
+            <audio loop id="song" src="song.mp3"></audio>
+        </div>
+        
+        <!-- Section 2 -->
+        <section class="fade">
+
+            <h1>It's 3,june</h1>
+            <h1>day my world was born<div class="counter" id="counter"></div>
+            </h1>
+            <h1>I Love You , Mymana</h1>
+
+        </section>
+
+        <!-- Section 3 -->
+        <section class="fade">
+            <h1>My Message For My Mymaonty</h1>
+
+            <p style="max-width:600px; margin-top:20px; line-height:1.8;">
+                Before you watch what's coming, I want you to know that you're the most precious thing to me, the best
+                thing that ever happened to me. No matter what happens between us—whether it's sadness, a break, or
+                anything else—God willing, nothing will ever separate us, no matter the circumstances or how difficult
+                life gets. I'm sorry for what I said a while ago; I know you've forgotten it. Happy birthday, my love,
+                and may we celebrate many more birthdays away from home. 😔♥️♥️♥️♥️
+            </p>
+
+            <!-- زر الترجمة -->
+            <span class="translate-btn" onclick="toggleTranslation()">
+                Translate
+            </span>
+
+            <!-- النص العربي -->
+            <p id="arabicText" class="arabic">
+                قبل ما تتفرجي ع الي جي انا عايزك تعرفي انك اغلي ما ليا وانك احلي حاجه حصلتلي ف حياتي وان مهما حصل بينا
+                من زعل او قطع او اي حاجه حصلت ف بمشئيه الله مفيش اي هتقدر تفرقنا عن بعض مهما كانت الظروف ومهما كانت
+                الايام صعبه وانا اسف ع الكلام الي قولتو من فتره وعارف انك نسيتيه
+                وكل سنه وانتي طيبه يحبيبي وان شاء الله باقي اعياد ميلاد قليله برا بيتي 😔♥️♥️♥️♥️
+            </p>
+        </section>
+
+        <!-- Section 4 -->
+        <section class="fade">
+            <h1>Some Moments</h1>
+
+            <div class="gallery">
+                <button class="nav-btn" onclick="prev()">
+                    <h1>❮</h1>
+                </button>
+
+                <div class="card1">
+                    <img id="img" src="Bb.jpeg">
+                    <h1 id="desc">Today is the day my world was born 🥳♥️♥️♥️</h1>
+                </div>
+
+                <button class="nav-btn" onclick="next()">
+                    <h1>❯</h1>
+                </button>
+            </div>
+        </section>
+
+        
+
+        <!-- Section 6 -->
+        <section class="fade">
+            <h1>At Last</h1>
+
+            <p style="max-width:600px; margin-top:20px; line-height:1.8;">
+                I hope you enjoyed the surprise, and happy birthday to the sweetest baby 😔♥️
+
+                And finally, I want to tell you that without you, I would be lost in my life, unable to focus on my
+                future or myself, and I wouldn't have been able to recover from what I'm going through.
+                You're the reason I get through all the difficult times, and you're the motivation that keeps me going
+                even though I have no passion.
+                But reaching diamonds requires digging mines, and you're the most beautiful diamond my eyes have ever
+                seen 👀💎
+                Happy birthday, my love, and I hope you never see a bad day in your life because you're the one who
+                deserves all the good in the world. I hope you'll keep putting up with me and my problems and my
+                annoying habits because I have no one else who can put up with me. 😔♥️♥️♥️♥️♥️♥️
+
+            </p>
+
+            <!-- زر الترجمة -->
+            <span class="translate-btn" onclick="toggleTranslation2()">
+                Translate
+            </span>
+
+            <!-- النص العربي -->
+            <p id="arabicText2" class="arabic">
+                اتمني تكوني اتبسطتي بالمفاجاه واحلي عيد ميلاد ل احلي بيبي😔♥️
+                وفالاخر حابب اقولك اني من غيرك كنت هبقي تايه ف حياتي ومكنتش هركز ف مستقبلي ولا ف نفسي ولا كنت هفوق من
+                الي انا فيه
+                انت سبب اني اعدي بكل الاوقات الصعبه وانتي الدافع الي مخليني مكمل مع ان مفيش اي شغف
+                لاكن الوصول للالماس محتاج حفر مناجم
+                وانتي احلي الماسه شافتها عيني 👀 💎
+                كل سنه وانتي طيبه يروحي واتمني انك متشوفيش اي يوم وحش ف حياتك لانك اكتر حد يستاهل كل خير ف الدنيا واتمني
+                تفضلي مستحملاني بمشاكلي وقرفي لاني مليش غيرك يستحملني😔♥️♥️♥️♥️♥️♥️
+            </p>
+
+
+
+
+        </section>
+    </div>
+
+    <script src="js.js"></script>
+
+</body>
+
+</html>
